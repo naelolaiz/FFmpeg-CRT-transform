@@ -526,13 +526,13 @@ then
 	# Otherwise "%TEXTURE_OVL%"=="lcdgrain" here
 	# LCD grain overlay (for lcd* monitor types only), doesn't need curvature
 
-	GRAINX=$(echo "$OY * $OASPECT * 50.0 / 100.0" | bc -l)
-	GRAINY=$(echo "$OY * 50.0 / 100.0" | bc -l)
+	GRAINX=$(echo "$OY * $OASPECT * 50.0 / 100.0" | bc)
+	GRAINY=$(echo "$OY * 50.0 / 100.0" | bc)
 
 	echo ""
 	echo Texture overlay:
 	
-	ffmpeg -hide_banner -y -loglevel $LOGLVL -stats -filter_complex "color=#808080:s=${GRAINX}x%${GRAINY}, \
+	ffmpeg -hide_banner -y -loglevel $LOGLVL -stats -filter_complex "color=#808080:s=${GRAINX}x${GRAINY}, \
 noise=all_seed=5150:all_strength=${LCD_GRAIN}, format=gray, \
 scale=${OX}:${OY}:flags=lanczos, format=rgb24 " -frames:v 1 TMPtexture.png
 fi
