@@ -14,3 +14,8 @@ jobs:
           apt-get update && apt-get install -y bc
           cd test-suite
           ./run-tests.sh          
+      - name: Publish results as artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-suite-results
+          path: test-suite/*out*
