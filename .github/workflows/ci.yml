@@ -10,7 +10,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: test examples
-        run: apt-get update && apt-get install -y bc && cd test-suite && ./run-tests.sh && ls -l
+        run: apt-get update && apt-get install -y bc && cd test-suite && ./run-tests.sh && ls -l >& logout
       - name: Publish results as artifacts
         uses: actions/upload-artifact@v3
         with:
