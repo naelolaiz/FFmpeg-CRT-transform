@@ -540,8 +540,8 @@ fi
 if [ "$TEXTURE_OVL" == "paper" ]
 then
 	# Phosphor overlay for monochrome "paper white" only, doesn't need curvature
-	PAPERX=$(echo "$OY * $OASPECT * 67 / 100" | bc -l)
-	PAPERY=$(echo "$OY * 67 / 100" | bc -l)
+	PAPERX=$(echo "$OY * $OASPECT * 67 / 100" | bc)
+	PAPERY=$(echo "$OY * 67 / 100" | bc)
 
 	echo ""
 	echo Texture overlay:
@@ -569,15 +569,15 @@ fi
 if [ "$FLAT_PANEL" == "yes" ]
 then
 
-  LUM_GAP=$(echo "255-255 * $PXGRID_ALPHA" | bc -l)
+  LUM_GAP=$(echo "255-255 * $PXGRID_ALPHA" | bc)
   LUM_PX=255
   if [ "$PXGRID_INVERT" == "1" ]
   then
-    LUM_GAP=$(echo "255 * $PXGRID_ALPHA" | bc -l)
+    LUM_GAP=$(echo "255 * $PXGRID_ALPHA" | bc)
     LUM_PX=0
   fi
-  GX=$(echo "$PRESCALE_BY / $PX_FACTOR_X" | bc -l)
-  GY=$(echo "$PRESCALE_BY / $PX_FACTOR_Y" | bc -l)
+  GX=$(echo "$PRESCALE_BY / $PX_FACTOR_X" | bc)
+  GY=$(echo "$PRESCALE_BY / $PX_FACTOR_Y" | bc)
 
   echo ""
   echo Grid:
