@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # FFmpeg CRT transform script / VileR 2021
 # parameter 1 = config file
