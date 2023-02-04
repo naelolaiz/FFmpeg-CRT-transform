@@ -62,7 +62,7 @@ fi
 IX=
 IY=
 FC= 
-for i in $(ffprobe -hide_banner -loglevel quiet -select_streams v:0 -show_streams $input_file)
+for i in $(ffprobe -hide_banner -loglevel quiet -select_streams v:0 -show_streams -show_entries stream=width,height,nb_frames $input_file)
 do
   n=$(echo $i | awk -F"=" '{print $1}')
   v=$(echo $i | awk -F"=" '{print $2}')
