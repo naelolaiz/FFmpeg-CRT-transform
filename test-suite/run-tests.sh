@@ -11,7 +11,7 @@ pushd ..
 for filename in test-suite/??.*; do 
     EXTENSION=${filename//?*\./.}
     BASENAME=${filename//\.*/}
-    ./ffcrt.sh ${BASENAME}cfg.cfg ${filename} ${BASENAME}-out${EXTENSION} || (echo "ERROR EXECUTING filter for ${filename} ; exit 1)
+    ./ffcrt.sh ${BASENAME}cfg.cfg ${filename} ${BASENAME}-out${EXTENSION} || (echo "ERROR EXECUTING filter for ${filename}" ; exit 1)
 done
 popd
 ENDRUN=$(date +%s.%N)
