@@ -231,13 +231,13 @@ fi
 c=$(echo "$CRT_CURVATURE != 0.0" | bc -l)
 if [ "$c" == "1" ]
 then
-  LENSC=", pad=iw+8:ih+8:4:4:black, lenscorrection=k1=$CRT_CURVATURE:k2=$CRT_CURVATURE:i=bilinear, crop=iw-8:ih-8"
+  LENSC=", pad=iw+8:ih+8:4:4:black, lenscorrection=k1=$CRT_CURVATURE:k2=$CRT_CURVATURE, crop=iw-8:ih-8"
 fi
 
 c=$(echo "$BEZEL_CURVATURE != 0.0" | bc -l)
 if [ "$c" == "1" ]
 then
-  BZLENSC=", scale=iw*2:ih*2:flags=gauss, pad=iw+8:ih+8:4:4:black, lenscorrection=k1=$BEZEL_CURVATURE:k2=$BEZEL_CURVATURE:i=bilinear, crop=iw-8:ih-8, scale=iw/2:ih/2:flags=gauss"
+  BZLENSC=", scale=iw*2:ih*2:flags=gauss, pad=iw+8:ih+8:4:4:black, lenscorrection=k1=$BEZEL_CURVATURE:k2=$BEZEL_CURVATURE, crop=iw-8:ih-8, scale=iw/2:ih/2:flags=gauss"
 fi
 
 # Scan factor
