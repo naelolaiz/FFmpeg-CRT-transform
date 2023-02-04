@@ -1,0 +1,11 @@
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: jrottenberg/ffmpeg
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: test examples
+        run: cd test-suite && ./run_tests.sh
