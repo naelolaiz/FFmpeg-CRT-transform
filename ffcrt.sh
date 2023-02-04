@@ -222,19 +222,19 @@ fi
 # Curvature factors
 
 
-c=$(echo "$BEZEL_CURVATURE < $CRT_CURVATURE" | bc -l)
+c=$(echo "$BEZEL_CURVATURE < $CRT_CURVATURE" | bc)
 if [ "$c"  == "1" ]
 then
   BEZEL_CURVATURE=$CRT_CURVATURE
 fi
 
-c=$(echo "$CRT_CURVATURE != 0.0" | bc -l)
+c=$(echo "$CRT_CURVATURE != 0.0" | bc)
 if [ "$c" == "1" ]
 then
   LENSC=", pad=iw+8:ih+8:4:4:black, lenscorrection=k1=$CRT_CURVATURE:k2=$CRT_CURVATURE, crop=iw-8:ih-8"
 fi
 
-c=$(echo "$BEZEL_CURVATURE != 0.0" | bc -l)
+c=$(echo "$BEZEL_CURVATURE != 0.0" | bc)
 if [ "$c" == "1" ]
 then
   BZLENSC=", scale=iw*2:ih*2:flags=gauss, pad=iw+8:ih+8:4:4:black, lenscorrection=k1=$BEZEL_CURVATURE:k2=$BEZEL_CURVATURE, crop=iw-8:ih-8, scale=iw/2:ih/2:flags=gauss"
@@ -260,7 +260,7 @@ fi
 # Handle monochrome settings; special cases: 'p7' (decay/latency are processed differently and require a couple more curve maps),
 # 'paperwhite' (uses a texture overlay), 'lcd*' (optional texture overlay + if FLAT_PANEL then pixel grid is inverted too)
 
-grain=$(echo "$LCD_GRAIN > 0.0" | bc -l)
+grain=$(echo "$LCD_GRAIN > 0.0" | bc)
 
 if [ "$MONITOR_COLOR" == "white" ]
 then
@@ -379,7 +379,7 @@ fi
 
 # Can skip some stuff where not needed
 
-c=$(echo "$OVL_ALPHA == 0.0" | bc -l)
+c=$(echo "$OVL_ALPHA == 0.0" | bc)
 if [ "$c" == "1" ]
 then
   SKIP_OVL=1
@@ -387,7 +387,7 @@ else
   SKIP_OVL=0
 fi
 
-c=$(echo "$BRIGHTEN == 1.0" | bc -l)
+c=$(echo "$BRIGHTEN == 1.0" | bc)
 if [ "$c" == "1" ]
 then
   SKIP_BRI=1
@@ -474,7 +474,7 @@ fi
 echo ""
 echo Shadowmask overlay:
 
-c=$(echo "$OVL_ALPHA > 0.0" | bc -l)
+c=$(echo "$OVL_ALPHA > 0.0" | bc)
 if [ $c == "0" ]
 then
 	# (if shadowmask alpha is 0, just make a blank canvas)
@@ -614,7 +614,7 @@ fi
 
 if [ "$IS_VIDEO" == "1" ]
 then
-  c=$(echo "$LATENCY > 0.0" | bc -l)
+  c=$(echo "$LATENCY > 0.0" | bc)
   if [ "$c" == "1" ]
   then 
     if [ "$MONITOR_COLOR" != "p7" ]
@@ -634,7 +634,7 @@ fi
 
 if [ ! -z "$IS_VIDEO" ]
 then
-  c=$(echo "$P_DECAY_FACTOR > 0.0" | bc -l)
+  c=$(echo "$P_DECAY_FACTOR > 0.0" | bc)
   if [ "$c" == "1" ]
   then
     if [ "$MONITOR_COLOR" != "p7" ]
@@ -750,7 +750,7 @@ if [ "$SCANLINES_ON" == "no" ]
 then
   if [ "$BEZEL_CURVATURE" == "$CRT_CURVATURE" ]
   then
-    c=$(echo "$CORNER_RADIUS == 0.0" | bc -l)
+    c=$(echo "$CORNER_RADIUS == 0.0" | bc)
     if [ "$c" == "1" ]
     then
       if [ ! -z "$SKIP_OVL" ] && [ ! -z "$SKIP_BRI" ]
