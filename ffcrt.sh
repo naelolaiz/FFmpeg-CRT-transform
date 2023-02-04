@@ -489,7 +489,7 @@ scale=round(iw*${OVL_SCALE}):round(ih*${OVL_SCALE}):flags=lanczos+${SWSFLAGS}" \
 	OVL_X=
 	OVL_Y=
 	
-	for i in $('ffprobe -hide_banner -loglevel quiet -show_entries stream=width,height TMPshadowmask1x.png | grep "="')
+	for i in $(ffprobe -hide_banner -loglevel quiet -show_entries stream=width,height TMPshadowmask1x.png | grep "=")
 	do
 	  n=$(echo $i | awk -F"=" '{print $1}')
 	  v=$(echo $i | awk -F"=" '{print $2}')
